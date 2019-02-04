@@ -1,0 +1,12 @@
+<!--INÍCIO DO MENU -->
+<div class="col-md-9 col-xs-12" *ngIf="menu">
+
+    <mt-menu-item  (onAddMenuItem)="componentCart.add($event)" 
+    *ngFor="let menuItem of menu" [menuItem]="menuItem" ></mt-menu-item>
+   
+</div>
+
+<div class="col-md-3 col-xs-12">
+  <mt-cart #componentCart></mt-cart>
+</div>
+<!-- FIM DO MENU -->

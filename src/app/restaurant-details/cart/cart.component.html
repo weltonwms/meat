@@ -1,0 +1,57 @@
+<!--INICIO DO CARRINHO-->
+<div class="box box-solid">
+  <div class="box-header">
+    <i class="fa fa-shopping-cart"></i>
+
+    <h3 class="box-title">Carrinho</h3>
+  </div>
+  <div class="box-content" *ngIf="getList().length; else contentNoItems">
+  <!-- /.box-header -->
+  <div class="box-body">
+    <div class="table-responsive">
+        <table class="table" >
+          <tbody>
+          <tr *ngFor="let cartItem of getList()">
+            
+            <th style="width:60%">
+                {{cartItem.qtd}}x 
+                {{cartItem.item.name}}
+              </th>
+              
+            <td class="text-right">{{cartItem.value() | currency:"BRL"}}</td>
+
+            <td>
+                <button class="btn btn-xs btn-danger" (click)="removeItem(cartItem)">
+                    <i class="fa fa-remove"></i>
+                </button>
+            </td>
+
+          </tr>
+         
+         
+          <tr>
+            <th>Total:</th>
+           
+            <td class="text-right">{{total() | currency:"BRL"}}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+  </div>
+  <div class="box-footer" >
+    <div class="pull-right">
+      <button type="button" (click)="limpar()" class="btn btn-danger"><i class="fa fa-trash"></i> Limpar</button>
+      <a href="order.html" class="btn btn-success"><i class="fa fa-credit-card"></i> Fechar Pedido</a>
+    </div>
+  </div>
+</div>
+
+</div> <!--fim box content -->
+
+<ng-template #contentNoItems>
+  <div class="box-footer">
+    <p>Seu carrinho está vazio.</p><br>
+  </div>
+</ng-template>
+<!-- FIM DO CARRINHO -->
