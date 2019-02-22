@@ -6,6 +6,7 @@ import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantDetailsComponent } from './restaurant-details/restaurant-details.component';
 import { MenuComponent } from './restaurant-details/menu/menu.component';
 import { ReviewsComponent } from './restaurant-details/reviews/reviews.component';
+import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
     {path:'reviews', component:ReviewsComponent},
     {path:'', redirectTo:'menu', pathMatch:'full'}
   ]},
+  {path:'order', component:OrderComponent},
   {path:'restaurants', component:RestaurantsComponent}
 ];
 

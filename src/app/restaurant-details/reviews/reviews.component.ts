@@ -2,10 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { RestaurantsService } from 'src/app/restaurants/restaurats.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import {trigger, state, style, transition, animate} from '@angular/animations';
 
 @Component({
   selector: 'mt-reviews',
-  templateUrl: './reviews.component.html'
+  templateUrl: './reviews.component.html',
+  animations:[
+    trigger('showEfect',[
+      state('visible', style({opacity:1})),
+      state('void', style({opacity:0, transform:"translateX(-40px) "})),
+      transition('void=>visible', animate('600ms 0s ease-out'))
+    ])//fim da trigger
+  ] //fim animations
 })
 export class ReviewsComponent implements OnInit {
 
@@ -37,8 +45,6 @@ export class ReviewsComponent implements OnInit {
     return image;
   }
 
-  x1(){
-    alert('x1');
-  }
+ 
 
 }

@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +19,14 @@ import { ReviewsComponent } from './restaurant-details/reviews/reviews.component
 import { CartComponent } from './restaurant-details/cart/cart.component';
 import { MenuItemComponent } from './restaurant-details/menu-item/menu-item.component';
 import { CartService } from './restaurant-details/cart/cart.service';
+import { OrderComponent } from './order/order.component';
+import { OrderItemsComponent } from './order/order-items/order-items.component';
+import { DeliveryCostsComponent } from './order/delivery-costs/delivery-costs.component';
+import { SnackbarComponent } from './share/messages/snackbar/snackbar.component';
+import { InputComponent } from './share/input/input.component';
+import { RadioComponent } from './share/radio/radio.component';
+import { RatingComponent } from './share/rating/rating.component';
+import { OrderService } from './order/order.service';
 
 @NgModule({
   declarations: [
@@ -31,14 +41,23 @@ import { CartService } from './restaurant-details/cart/cart.service';
     MenuComponent,
     ReviewsComponent,
     CartComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    OrderComponent,
+    OrderItemsComponent,
+    DeliveryCostsComponent,
+    SnackbarComponent,
+    InputComponent,
+    RadioComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
-  providers: [RestaurantsService, CartService],
+  providers: [RestaurantsService, CartService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

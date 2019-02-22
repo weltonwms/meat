@@ -41,4 +41,15 @@ export class CartService{
         const indexCart= this.cartList.indexOf(cartItem);
         this.cartList.splice(indexCart,1);
     }
+
+    decrementItem(cartItem:Cart){
+        cartItem.qtd--;
+       if(cartItem.qtd < 1){
+        this.removeItem(cartItem);
+       }
+    }
+
+    incrementItem(cartItem:Cart){
+        cartItem.qtd++;
+    }
 }
