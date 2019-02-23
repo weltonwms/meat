@@ -27,6 +27,7 @@ import { InputComponent } from './share/input/input.component';
 import { RadioComponent } from './share/radio/radio.component';
 import { RatingComponent } from './share/rating/rating.component';
 import { OrderService } from './order/order.service';
+import { NotificationService } from './share/messages/notification.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { OrderService } from './order/order.service';
     BrowserAnimationsModule,
     ReactiveFormsModule
   ],
-  providers: [RestaurantsService, CartService, OrderService],
+  providers: [RestaurantsService, CartService, OrderService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

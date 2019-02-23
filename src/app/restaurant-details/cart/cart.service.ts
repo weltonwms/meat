@@ -1,8 +1,12 @@
 import { MenuItem } from '../menu-item/menu-item.model';
 import { Cart } from './cart.model';
+import { NotificationService } from 'src/app/share/messages/notification.service';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class CartService{
-    cartList=[]
+    cartList=[];
+    constructor(public notification:NotificationService){}
 
     add(menuItem:MenuItem){
         const cartItem:Cart=this.cartList.find((cartItem:Cart)=>{
@@ -19,7 +23,7 @@ export class CartService{
             let newCart= new Cart(menuItem);
             this.cartList.push(newCart);
         }
-     
+        this.notification.notify(`${menuItem.name} adicionado`);
     }
 
 
@@ -35,11 +39,13 @@ export class CartService{
 
     limpar(){
         this.cartList= [];
+        this.notification.notify('Carrinho Limpo!')
     }
 
     removeItem(cartItem:Cart){
         const indexCart= this.cartList.indexOf(cartItem);
         this.cartList.splice(indexCart,1);
+        this.notification.notify(`${cartItem.item.name} removido`)
     }
 
     decrementItem(cartItem:Cart){

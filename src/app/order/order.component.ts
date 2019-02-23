@@ -4,6 +4,7 @@ import { FormBuilder, Validator, Validators, AbstractControl, FormGroup } from '
 import { RadioOption } from '../share/radio/radio-option.model';
 import {Order, OrderItem} from './order.model';
 import { Cart } from '../restaurant-details/cart/cart.model';
+import { NotificationService } from '../share/messages/notification.service';
 
 @Component({
   selector: 'mt-order',
@@ -17,8 +18,11 @@ export class OrderComponent implements OnInit {
     {label:"Cartão de Débito", value:"DEB"}
   ];
 
-  constructor(private orderService: OrderService,
-    private fb: FormBuilder) { }
+  constructor(
+    private orderService: OrderService,
+    private fb: FormBuilder,
+    private notification:NotificationService
+    ) { }
 
   ngOnInit() {
     this.orderForm = this.fb.group({
@@ -75,7 +79,7 @@ export class OrderComponent implements OnInit {
     this.orderService.checkOrder(order).subscribe(response=>{
       console.log(response);
       this.orderService.clear();
-      alert('Compra com sucesso');
+      this.notification.notify('Compra Realizada com Sucesso')
     });
   }
 
