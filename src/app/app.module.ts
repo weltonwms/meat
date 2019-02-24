@@ -28,6 +28,7 @@ import { RadioComponent } from './share/radio/radio.component';
 import { RatingComponent } from './share/rating/rating.component';
 import { OrderService } from './order/order.service';
 import { NotificationService } from './share/messages/notification.service';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { NotificationService } from './share/messages/notification.service';
     SnackbarComponent,
     InputComponent,
     RadioComponent,
-    RatingComponent
+    RatingComponent,
+    OrderSummaryComponent
   ],
   imports: [
     BrowserModule,

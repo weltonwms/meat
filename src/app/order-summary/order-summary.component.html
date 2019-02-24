@@ -1,0 +1,20 @@
+ <!-- INICIO DO CONTEUDO -->
+ <section class="content-header">
+</section>
+
+<section class="content">
+  <div class="jumbotron">
+    <h2>Pedido Conluído</h2>
+    <p>Seu pedido foi recebido pelo restaurante. Prepare a mesa que a comida está chegando!</p>
+    <p>Nr do Pedido: {{OrderId}}</p>
+    <p><b>Avalie</b> sua experiência:</p>
+    <mt-rating (rated)="setFinishRate($event)"></mt-rating>
+
+    <p *ngIf="this.finishRate" class="text-center">
+      Obrigado por sua Avaliação!<br>
+      Nota: {{this.finishRate}}
+    </p>
+  </div>
+
+</section>
+<!-- FIM DO CONTEUDO -->

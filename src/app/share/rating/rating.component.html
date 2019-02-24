@@ -1,3 +1,11 @@
 <p>
-  rating works!
+  <i *ngFor="let r of rates" class="fa" 
+  [class.fa-star]="r <=rate"
+  [class.fa-star-o]="r > rate"
+  (click)="setRate(r)"
+  (mouseenter)="setTemporaryRate(r)"
+  (mouseleave)= "rollbackTemporaryRate()"
+  >
+</i>
+ 
 </p>

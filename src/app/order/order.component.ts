@@ -5,6 +5,7 @@ import { RadioOption } from '../share/radio/radio-option.model';
 import {Order, OrderItem} from './order.model';
 import { Cart } from '../restaurant-details/cart/cart.model';
 import { NotificationService } from '../share/messages/notification.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'mt-order',
@@ -21,7 +22,8 @@ export class OrderComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private fb: FormBuilder,
-    private notification:NotificationService
+    private notification:NotificationService,
+    private router:Router
     ) { }
 
   ngOnInit() {
@@ -79,7 +81,9 @@ export class OrderComponent implements OnInit {
     this.orderService.checkOrder(order).subscribe(response=>{
       console.log(response);
       this.orderService.clear();
-      this.notification.notify('Compra Realizada com Sucesso')
+      this.notification.notify('Compra Realizada com Sucesso');
+      this.router.navigate(['/order_summary',response.id]);
+      
     });
   }
 
