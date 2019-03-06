@@ -1,24 +1,43 @@
- <!-- INíCIO do CONTEÚDO -->
- <section class="content-header">
-    <h1>
-      Todos os Restaurantes
-    </h1>
-  </section>
+<!-- INíCIO do CONTEÚDO -->
+<section class="content-header">
+  <h1>
+    Todos os Restaurantes
+    <a class="pull-right searchLink" (click)="toggleSearchState()">
+      <span><small>{{inputSearch.value}}</small> &nbsp;</span>
+      <i class="fa fa-search"></i>
+    </a>
+  </h1>
 
-
-  <section class="content">
-
-    <div class="row">
-            <div class="col-sm-6 col-xs-12" *ngFor="let restaurant of restaurants" [@appear]="'visible'">
-              <mt-restaurant [restaurant]="restaurant"></mt-restaurant>
+  <div class="row">
+      <div class="col-xs-12 searchBar" [@animeSearchBar]="searchState">
+          <form [formGroup]="searchForm">
+            <div class="form-group">
+              <input type="text" class="form-control" #iptSearch
+              formControlName="inputSearch"
+              placeholder="O que está procurando?">
             </div>
-           
-          
+          </form>
+        </div>
+  </div>
 
-           
+</section>
 
-          </div>
 
-  </section>
+<section class="content">
 
-  <!-- FIM  do CONTEÚDO -->
+
+  <div class="row">
+    <div class="col-sm-6 col-xs-12" *ngFor="let restaurant of restaurants" [@appear]="'visible'">
+      <mt-restaurant [restaurant]="restaurant"></mt-restaurant>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!restaurants.length">
+    <div class="col-xs-12">
+      <h2 class="lead text-center">Nenhum Item Localizado</h2>
+    </div>
+  </div>
+
+</section>
+
+<!-- FIM  do CONTEÚDO -->

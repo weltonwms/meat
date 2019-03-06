@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
-import { RestaurantsService } from './restaurants/restaurats.service';
+import { RestaurantsService } from './restaurants/restaurants.service';
 import { RestaurantDetailsComponent } from './restaurant-details/restaurant-details.component';
 import { MenuComponent } from './restaurant-details/menu/menu.component';
 import { ReviewsComponent } from './restaurant-details/reviews/reviews.component';
@@ -58,7 +58,8 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [RestaurantsService, CartService, OrderService, NotificationService],
   bootstrap: [AppComponent]

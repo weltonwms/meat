@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RestaurantsService } from 'src/app/restaurants/restaurats.service';
+import { RestaurantsService } from 'src/app/restaurants/restaurants.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
