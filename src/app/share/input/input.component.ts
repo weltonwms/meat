@@ -11,6 +11,7 @@ import { identifierModuleUrl } from '@angular/compiler';
 export class InputComponent implements OnInit, AfterContentInit {
   @Input() label:string;
   @Input() errorMessage:string;
+  @Input() showTip:boolean=true;
 
   @ContentChild(FormControlName) formControlName:FormControlName;
  

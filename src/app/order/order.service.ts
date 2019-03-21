@@ -1,15 +1,18 @@
 import {CartService} from '../restaurant-details/cart/cart.service';
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Order } from './order.model';
 import { Observable } from 'rxjs';
-
+import {MEAT_API} from '../meat.api';
+import { LoginService } from '../security/login/login.service';
 
 @Injectable()
 export class OrderService{
     valorFrete:number=10;
 
-    constructor(private cartService:CartService, private http:HttpClient){}
+    constructor(private cartService:CartService, 
+        private http:HttpClient,
+        private loginService:LoginService){}
 
     items(){
         return this.cartService.getList();
@@ -36,8 +39,15 @@ export class OrderService{
     }
 
     checkOrder(order:Order):Observable<any>{
-        let url= "http://localhost:3000";
-        return this.http.post(url+"/orders", order);
+        let headers= new HttpHeaders();
+       if(this.loginService.isUserLogged()){
+            headers= headers.
+                    set('Authorization',`Bearer ${this.loginService.userLogged.acessToken}`);
+         
+            
+       }
+       return this.http.post(MEAT_API+"/orders", order,{headers});
+       
     }
 
     clear(){

@@ -6,6 +6,9 @@ import {Order, OrderItem} from './order.model';
 import { Cart } from '../restaurant-details/cart/cart.model';
 import { NotificationService } from '../share/messages/notification.service';
 import {Router} from '@angular/router';
+import { LoginService } from '../security/login/login.service';
+import {User} from '../security/user.model';
+
 
 @Component({
   selector: 'mt-order',
@@ -23,14 +26,16 @@ export class OrderComponent implements OnInit {
     private orderService: OrderService,
     private fb: FormBuilder,
     private notification:NotificationService,
-    private router:Router
+    private router:Router,
+    private loginService:LoginService
     ) { }
 
   ngOnInit() {
+    let user= this.loginService.isUserLogged()?this.loginService.userLogged:new User();
     this.orderForm = this.fb.group({
-      name: this.fb.control('', [Validators.required]),
-      email: this.fb.control('', [Validators.required, Validators.email]),
-      emailConfirm: this.fb.control('', [Validators.required, Validators.email]),
+      name: this.fb.control(user.name, [Validators.required]),
+      email: this.fb.control(user.email, [Validators.required, Validators.email]),
+      emailConfirm: this.fb.control(user.email, [Validators.required, Validators.email]),
       address: this.fb.control('', [Validators.required, Validators.minLength(5)]),
       number: this.fb.control('', [Validators.required, Validators.pattern(/[0-9]$/)]),
       optionalAddress: this.fb.control(''),

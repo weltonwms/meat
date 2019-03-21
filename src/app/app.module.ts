@@ -9,26 +9,22 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
-import { RestaurantsService } from './restaurants/restaurants.service';
+
 import { RestaurantDetailsComponent } from './restaurant-details/restaurant-details.component';
 import { MenuComponent } from './restaurant-details/menu/menu.component';
 import { ReviewsComponent } from './restaurant-details/reviews/reviews.component';
 import { CartComponent } from './restaurant-details/cart/cart.component';
 import { MenuItemComponent } from './restaurant-details/menu-item/menu-item.component';
-import { CartService } from './restaurant-details/cart/cart.service';
-import { OrderComponent } from './order/order.component';
-import { OrderItemsComponent } from './order/order-items/order-items.component';
-import { DeliveryCostsComponent } from './order/delivery-costs/delivery-costs.component';
-import { SnackbarComponent } from './share/messages/snackbar/snackbar.component';
-import { InputComponent } from './share/input/input.component';
-import { RadioComponent } from './share/radio/radio.component';
-import { RatingComponent } from './share/rating/rating.component';
-import { OrderService } from './order/order.service';
-import { NotificationService } from './share/messages/notification.service';
+
+
+
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { LoginComponent } from './security/login/login.component';
+
+
+import {ShareModule} from './share/share.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +32,6 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    AboutComponent,
     RestaurantsComponent,
     RestaurantComponent,
     RestaurantDetailsComponent,
@@ -44,14 +39,9 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     ReviewsComponent,
     CartComponent,
     MenuItemComponent,
-    OrderComponent,
-    OrderItemsComponent,
-    DeliveryCostsComponent,
-    SnackbarComponent,
-    InputComponent,
-    RadioComponent,
-    RatingComponent,
-    OrderSummaryComponent
+     
+    OrderSummaryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -59,9 +49,10 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ShareModule.forRoot()
   ],
-  providers: [RestaurantsService, CartService, OrderService, NotificationService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
