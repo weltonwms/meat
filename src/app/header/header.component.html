@@ -16,9 +16,21 @@
         </ul>
       </div>
       <!-- /.navbar-collapse -->
-
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li class="user user-menu">
+              <a (click)="login()" *ngIf="!isUserLogged() ; else printLogged">Entrar</a>
+              
+              
+          </li>
+        </ul>
+      </div>
 </div>
     <!-- /.container-fluid -->
   </nav>
 </header>
 <!-- Full Width Column -->
+
+<ng-template #printLogged>
+  <span > {{user().name}} |   <a (click)="logout()">  Sair</a></span>
+</ng-template>

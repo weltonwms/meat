@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       email: this.fb.control('', [Validators.required, Validators.email]),
       password: this.fb.control('', Validators.required)
     })
-
+    
   }
 
   login() {
@@ -37,9 +37,7 @@ export class LoginComponent implements OnInit {
          errorResponse => this.ns.notify(errorResponse.error.message),
         ()=>{
           let navigateTo= this.route.snapshot.params.page;
-         // alert(navigateTo);
           this.router.navigate([navigateTo ])
-         
         }
       )
   }
